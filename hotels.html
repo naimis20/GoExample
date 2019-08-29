@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-color: #f3f3f3;
+      }
+      .hotels {
+        padding: 8px;
+        max-width: 800px;
+      }
+      .hotel {
+        display: grid;
+        grid-template: 200px;
+      }
+      .hotel img {
+        width: 200px;
+        max-height: 100px;
+      }
+
+      .info {
+        display: flex;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Booking scraper</h1>
+    <div class="hotels">
+      {{range $h := .}}
+      <div class="hotel">
+        <img src="{{ $h.Thumbnail }}" alt="{{ $h.Title }}" />
+        <div class="info">
+		  <h2>{{ $h.Title }}</h2>
+		  {{ $h.RatingAvg}}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
