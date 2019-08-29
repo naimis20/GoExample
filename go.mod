@@ -1,4 +1,4 @@
-module github.com/naimis20/goexample
+module github.com/naimis20/GoExample
 
 go 1.12
 
