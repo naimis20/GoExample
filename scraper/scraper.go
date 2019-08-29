@@ -1,6 +1,7 @@
 package scraper
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
@@ -21,7 +22,7 @@ func ScrapeBooking(client *http.Client, pages int) (h []Hotel) {
 	c := make(chan []Hotel, pages)
 
 	for i := 0; i < pages; i++ {
-		go Scrape(client, bookingUrl+SprintF("&offset=%d", i*perPage), c)
+		go Scrape(client, bookingUrl+fmt.Sprintf("&offset=%d", i*perPage), c)
 	}
 	for i := 0; i < pages; i++ {
 		h = append(h, <-c...)

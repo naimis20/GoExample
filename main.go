@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"example.com/GoExample/scraper"
-	"example.com/GoExample/server"
+	"github.com/naimis20/GoExample/scraper"
+	"github.com/naimis20/GoExample/server"
 )
 
 func main() {

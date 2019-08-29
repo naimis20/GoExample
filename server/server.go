@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"example.com/GoExample/scraper"
+	"github.com/naimis20/GoExample/scraper"
 )
 
 func Serve(h []scraper.Hotel) {
