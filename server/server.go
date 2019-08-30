@@ -11,7 +11,7 @@ import (
 
 func Serve(h []scraper.Hotel) {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		t, err := template.ParseFiles("./hotels.html")
+		t, err := template.ParseFiles("hotels.html")
 		if err != nil {
 			log.Fatal(err.Error())
 		}
