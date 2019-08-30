@@ -22,6 +22,6 @@ func Serve(h []scraper.Hotel) {
 		json.NewEncoder(w).Encode(h)
 	})
 
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":8080", nil)
 
 }
