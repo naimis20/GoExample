@@ -22,13 +22,9 @@ type Hotel struct {
 func ScrapeBooking(client *http.Client, pages int) (h []Hotel) {
 	c := make(chan []Hotel, pages)
 
-	// for i := 0; i < pages; i++ {
 	url := fmt.Sprintf(bookingURL, perPage, pages*perPage) //+ fmt.Sprintf("&offset=%d", i*perPage)
 	go Scrape(client, url, c)
-	// }
-	// for i := 0; i < pages; i++ {
 	h = append(h, <-c...)
-	// }
 
 	return
 }
