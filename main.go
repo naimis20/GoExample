@@ -8,6 +8,12 @@ import (
 )
 
 func main() {
+	// pages, err := strconv.Atoi(os.Args[1])
+	// if err != nil {
+	// 	fmt.Println("Error")
+	// 	pages = 3
+	// }
+
 	pages := 3
 
 	client := &http.Client{}
