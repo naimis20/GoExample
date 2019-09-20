@@ -20,23 +20,23 @@ type Hotel struct {
 	RatingAvg string `json:"rating_avg"`
 }
 
-func ScrapeBooking(client *http.Client, pages int) (h []Hotel) {
-	c := make(chan []Hotel, pages)
+func ScrapeBooking(client *http.Client, pages int) (hotels []Hotel) {
+	hotelsChannel := make(chan []Hotel, pages)
 
 	for i := 0; i < pages; i++ {
 		offset := i * perPage
 		parameters := fmt.Sprintf("&rows=%d&offset=%d", perPage, offset)
 		url := bookingURL + parameters
-		go Scrape(client, url, c)
+		go Scrape(client, url, hotelsChannel)
 	}
 	for i := 0; i < pages; i++ {
-		h = append(h, <-c...)
+		hotels = append(hotels, <-hotelsChannel...)
 	}
 
 	return
 }
 
-func Scrape(client *http.Client, url string, c chan []Hotel) {
+func Scrape(client *http.Client, url string, hotelsChannel chan []Hotel) {
 	response, err := client.Get(url)
 	if err != nil {
 		log.Fatal(err)
@@ -58,5 +58,5 @@ func Scrape(client *http.Client, url string, c chan []Hotel) {
 		})
 	})
 
-	c <- hotels
+	hotelsChannel <- hotels
 }
